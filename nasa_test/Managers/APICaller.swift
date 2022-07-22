@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 struct Constants{
     static let baseURL = "https://api.nasa.gov/mars-photos/api/v1/rovers"
@@ -20,30 +20,30 @@ enum APIError: Error{
     case failedToGetData
 }
 
-class APICaller{
+class APICaller {
     static let shared = APICaller()
     
     
-    public func getDataCuriosity(completion: @escaping (Result<RoverPhoto,Error>) -> Void) {
-      let url = URL(string: "\(Constants.baseURL)/curiosity/photos?sol=1000&api_key=895TLKaHskn6AUO9MwdzgXneaTJ6JGRm6kqWB6Jd")!
-      let task = URLSession.shared.dataTask(with: url) { data, _, error in
-        guard let data = data, error == nil else {
-          completion(.failure(APIError.failedToGetData))
-          return
+    public func getDataCuriosity(atPage page: Int, completion: @escaping (Result<[Photo],Error>) -> Void) {
+        
+        let url = URL(string: "\(Constants.baseURL)/curiosity/photos?sol=\(page)&api_key=\(Constants.APIKey)")!
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            
+            if let data = data {
+                do {
+                    let result = try JSONDecoder().decode(RoverPhoto.self, from: data)
+                    completion(.success(result.photos))
+                }
+                catch {
+                    self.handleApiError(error.localizedDescription)
+                }
+            } else if let error = error {
+                self.handleApiError(error.localizedDescription)
+            }
         }
-
-        do {
-          let result = try JSONDecoder().decode(RoverPhoto.self, from: data)
-            print(result)
-          completion(.success(result))
-        }
-        catch {
-          completion(.failure(error))
-        }
-      }
-      task.resume()
-
-
+        task.resume()
+        
+        
     }
     
     func getDataOpportunity(completion: @escaping (Result<RoverPhoto, Error>) -> Void){
@@ -59,7 +59,7 @@ class APICaller{
                 completion(.success(result))
             }
             catch{
-                completion(.failure(error))
+                self.handleApiError(error.localizedDescription)
             }
         }
         task.resume()
@@ -78,10 +78,19 @@ class APICaller{
                 completion(.success(result))
             }
             catch{
-                completion(.failure(error))
+                self.handleApiError(error.localizedDescription)
             }
         }
         task.resume()
+    }
+    
+    private func handleApiError(_ message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancel)
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
+        }
     }
 }
 

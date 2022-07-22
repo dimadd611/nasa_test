@@ -10,74 +10,72 @@ import UIKit
 
 class RoverViewController: UIViewController{
     
+    // MARK: - UIElements
     private lazy var testCV: UICollectionView = {
+        
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.itemSize = CGSize(width: 150, height: 150)
         collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .clear
         collectionView.register(RoverCell.self, forCellWithReuseIdentifier: RoverCell.identifier)
-        
+        collectionView.delegate = self
+        collectionView.dataSource = self
         return collectionView
     }()
-
     
-    var curiosity: RoverPhoto?
-//    var opportunity: RoverPhoto?
-//    var spirit: RoverPhoto?
+    // MARK: - Variables
+    private var curiosity: [Photo] = []
+    private var isFetchingData = false
+    private var currentPage = 1
+    // MARK: - Lifecycle
     
-    
-    
-    private func fetchCuriosity() {
-      APICaller.shared.getDataCuriosity{ [weak self] result in
-        DispatchQueue.main.async { [self] in
-          switch result {
-          case .success(let model):
-
-            self?.curiosity = model
-            print(self?.curiosity?.photos.count)
-              self?.testCV.reloadData()
-          case .failure(let error):
-            print("Parsing Error: \(error.localizedDescription)")
-  //          self?.failedToGetProfile()
-          }
-        }
-      }
-    }
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        configureUI()
+        fetchCuriosity()
+    }
+    
+    // MARK: - Functions
+    private func configureUI() {
+        view.backgroundColor = .white
         view.addSubviews(testCV)
-        
         testCV.snp.makeConstraints{
             $0.leading.trailing.bottom.top.equalToSuperview()
         }
-        
-        
-        
-        testCV.dataSource = self
-        testCV.delegate = self
-        view.backgroundColor = .red
-        fetchCuriosity()
     }
-
-
+    
+    private func fetchCuriosity() {
+        
+        APICaller.shared.getDataCuriosity(atPage: currentPage) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+                
+            case .success(let model):
+                
+                self.curiosity.append(contentsOf: model)
+                self.isFetchingData = false
+                self.currentPage += 1
+                
+                DispatchQueue.main.async {
+                    self.testCV.reloadData()
+                }
+                
+            case .failure(let error):
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
+    }
 }
 
-extension RoverViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    
+// MARK: - Extension CollectionView DataSource
 
+extension RoverViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let curiosity = curiosity?.photos.prefix(100).count{
-            return curiosity
-        }
-        
-        return 0
+        return curiosity.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -85,15 +83,26 @@ extension RoverViewController: UICollectionViewDelegate, UICollectionViewDataSou
             return UICollectionViewCell()
         }
         
-        if let curiosity = curiosity?.photos[indexPath.row]{
-            cell.setup(with: RoverViewModel(roverId: curiosity.id, roverImg: curiosity.imgSrc, roverDate: curiosity.earthDate))
-        }
+        let curiosity = curiosity[indexPath.row]
+        cell.setup(model: curiosity)
 
-        
-        
-    return cell
+        return cell
     }
-    
-    
 }
 
+// MARK: - Extension CollectionView Delegate
+
+extension RoverViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let lastCuriosity = curiosity.count - 1
+        
+        if indexPath.row == lastCuriosity && !isFetchingData {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.isFetchingData = true
+                self.fetchCuriosity()
+            }
+        }
+    }
+}

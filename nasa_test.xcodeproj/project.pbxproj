@@ -9,10 +9,16 @@
 /* Begin PBXBuildFile section */
 		2EAC6662288A8BCC00BD97C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC6661288A8BCC00BD97C9 /* AppDelegate.swift */; };
 		2EAC6664288A8BCC00BD97C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC6663288A8BCC00BD97C9 /* SceneDelegate.swift */; };
-		2EAC6666288A8BCC00BD97C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC6665288A8BCC00BD97C9 /* ViewController.swift */; };
 		2EAC6669288A8BCC00BD97C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EAC6667288A8BCC00BD97C9 /* Main.storyboard */; };
 		2EAC666B288A8BCD00BD97C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EAC666A288A8BCD00BD97C9 /* Assets.xcassets */; };
 		2EAC666E288A8BCD00BD97C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EAC666C288A8BCD00BD97C9 /* LaunchScreen.storyboard */; };
+		2EAC667D288A8D2900BD97C9 /* RoverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC667C288A8D2900BD97C9 /* RoverScreen.swift */; };
+		2EAC667F288A8EB300BD97C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC667E288A8EB300BD97C9 /* Extensions.swift */; };
+		2EAC6681288A8EC600BD97C9 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC6680288A8EC600BD97C9 /* APICaller.swift */; };
+		2EAC6683288A8F0000BD97C9 /* RoverPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC6682288A8F0000BD97C9 /* RoverPhotos.swift */; };
+		2EAC6685288A8F1D00BD97C9 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC6684288A8F1D00BD97C9 /* Rover.swift */; };
+		2EAC6687288A8F3200BD97C9 /* RoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC6686288A8F3200BD97C9 /* RoverCell.swift */; };
+		2EAC668A288A8F6300BD97C9 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2EAC6689288A8F6300BD97C9 /* SDWebImage */; };
 		4EAC20E9B61756888CA08276 /* Pods_nasa_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC5E22E8678B6BACB01DD1B /* Pods_nasa_test.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,11 +26,16 @@
 		2EAC665E288A8BCC00BD97C9 /* nasa_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nasa_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EAC6661288A8BCC00BD97C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EAC6663288A8BCC00BD97C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2EAC6665288A8BCC00BD97C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2EAC6668288A8BCC00BD97C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2EAC666A288A8BCD00BD97C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EAC666D288A8BCD00BD97C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EAC666F288A8BCD00BD97C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EAC667C288A8D2900BD97C9 /* RoverScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverScreen.swift; sourceTree = "<group>"; };
+		2EAC667E288A8EB300BD97C9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2EAC6680288A8EC600BD97C9 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		2EAC6682288A8F0000BD97C9 /* RoverPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotos.swift; sourceTree = "<group>"; };
+		2EAC6684288A8F1D00BD97C9 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
+		2EAC6686288A8F3200BD97C9 /* RoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverCell.swift; sourceTree = "<group>"; };
 		2FDC40A3410E3553175B46BF /* Pods-nasa_test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nasa_test.release.xcconfig"; path = "Target Support Files/Pods-nasa_test/Pods-nasa_test.release.xcconfig"; sourceTree = "<group>"; };
 		55F2C8141697835D15B788BD /* Pods-nasa_test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nasa_test.debug.xcconfig"; path = "Target Support Files/Pods-nasa_test/Pods-nasa_test.debug.xcconfig"; sourceTree = "<group>"; };
 		CFC5E22E8678B6BACB01DD1B /* Pods_nasa_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nasa_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EAC668A288A8F6300BD97C9 /* SDWebImage in Frameworks */,
 				4EAC20E9B61756888CA08276 /* Pods_nasa_test.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,15 +75,76 @@
 		2EAC6660288A8BCC00BD97C9 /* nasa_test */ = {
 			isa = PBXGroup;
 			children = (
-				2EAC6661288A8BCC00BD97C9 /* AppDelegate.swift */,
-				2EAC6663288A8BCC00BD97C9 /* SceneDelegate.swift */,
-				2EAC6665288A8BCC00BD97C9 /* ViewController.swift */,
-				2EAC6667288A8BCC00BD97C9 /* Main.storyboard */,
-				2EAC666A288A8BCD00BD97C9 /* Assets.xcassets */,
-				2EAC666C288A8BCD00BD97C9 /* LaunchScreen.storyboard */,
+				2EAC667A288A8CBE00BD97C9 /* Extensions */,
+				2EAC6676288A8C9800BD97C9 /* Controllers */,
+				2EAC6679288A8CB200BD97C9 /* Managers */,
+				2EAC6677288A8CA100BD97C9 /* Model */,
+				2EAC6678288A8CAB00BD97C9 /* ViewModel */,
+				2EAC667B288A8CD800BD97C9 /* Views */,
+				2EAC6675288A8C7800BD97C9 /* Utilities */,
 				2EAC666F288A8BCD00BD97C9 /* Info.plist */,
 			);
 			path = nasa_test;
+			sourceTree = "<group>";
+		};
+		2EAC6675288A8C7800BD97C9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2EAC6661288A8BCC00BD97C9 /* AppDelegate.swift */,
+				2EAC6663288A8BCC00BD97C9 /* SceneDelegate.swift */,
+				2EAC6667288A8BCC00BD97C9 /* Main.storyboard */,
+				2EAC666A288A8BCD00BD97C9 /* Assets.xcassets */,
+				2EAC666C288A8BCD00BD97C9 /* LaunchScreen.storyboard */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2EAC6676288A8C9800BD97C9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2EAC667C288A8D2900BD97C9 /* RoverScreen.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2EAC6677288A8CA100BD97C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2EAC6682288A8F0000BD97C9 /* RoverPhotos.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2EAC6678288A8CAB00BD97C9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2EAC6684288A8F1D00BD97C9 /* Rover.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2EAC6679288A8CB200BD97C9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2EAC6680288A8EC600BD97C9 /* APICaller.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		2EAC667A288A8CBE00BD97C9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2EAC667E288A8EB300BD97C9 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2EAC667B288A8CD800BD97C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2EAC6686288A8F3200BD97C9 /* RoverCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8161DF92362B9C179CFE7C9F /* Frameworks */ = {
@@ -88,7 +161,6 @@
 				55F2C8141697835D15B788BD /* Pods-nasa_test.debug.xcconfig */,
 				2FDC40A3410E3553175B46BF /* Pods-nasa_test.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -110,6 +182,9 @@
 			dependencies = (
 			);
 			name = nasa_test;
+			packageProductDependencies = (
+				2EAC6689288A8F6300BD97C9 /* SDWebImage */,
+			);
 			productName = nasa_test;
 			productReference = 2EAC665E288A8BCC00BD97C9 /* nasa_test.app */;
 			productType = "com.apple.product-type.application";
@@ -138,6 +213,9 @@
 				Base,
 			);
 			mainGroup = 2EAC6655288A8BCC00BD97C9;
+			packageReferences = (
+				2EAC6688288A8F6300BD97C9 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 2EAC665F288A8BCC00BD97C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -207,9 +285,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EAC6666288A8BCC00BD97C9 /* ViewController.swift in Sources */,
+				2EAC6687288A8F3200BD97C9 /* RoverCell.swift in Sources */,
 				2EAC6662288A8BCC00BD97C9 /* AppDelegate.swift in Sources */,
+				2EAC667D288A8D2900BD97C9 /* RoverScreen.swift in Sources */,
 				2EAC6664288A8BCC00BD97C9 /* SceneDelegate.swift in Sources */,
+				2EAC6683288A8F0000BD97C9 /* RoverPhotos.swift in Sources */,
+				2EAC6681288A8EC600BD97C9 /* APICaller.swift in Sources */,
+				2EAC667F288A8EB300BD97C9 /* Extensions.swift in Sources */,
+				2EAC6685288A8F1D00BD97C9 /* Rover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +510,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2EAC6688288A8F6300BD97C9 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2EAC6689288A8F6300BD97C9 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2EAC6688288A8F6300BD97C9 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2EAC6656288A8BCC00BD97C9 /* Project object */;
 }

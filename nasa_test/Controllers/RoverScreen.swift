@@ -8,11 +8,7 @@
 import Foundation
 import UIKit
 
-enum ScreenType{
-    case curiosity
-    case opportunity
-    case spirit
-}
+
 
 final class RoverViewController: UIViewController{
     
@@ -34,7 +30,7 @@ final class RoverViewController: UIViewController{
     private var curiosity: [Photo] = []
     private var isFetchingData = false
     private var currentPage = 1
-    var screenType: ScreenType?
+    var screenType: ScreenType!
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -60,7 +56,7 @@ final class RoverViewController: UIViewController{
     
     private func fetchCuriosity() {
         
-        APICaller.shared.getDataCuriosity(atPage: currentPage) { [weak self] result in
+        APICaller.shared.getData(atPage: currentPage, atType: screenType.roverType) { [weak self] result in
             guard let self = self else { return }
             
             switch result {

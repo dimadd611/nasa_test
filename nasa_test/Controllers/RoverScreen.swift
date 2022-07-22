@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
-class RoverViewController: UIViewController{
+enum ScreenType{
+    case curiosity
+    case opportunity
+    case spirit
+}
+
+final class RoverViewController: UIViewController{
     
     // MARK: - UIElements
     private lazy var testCV: UICollectionView = {
@@ -28,6 +34,7 @@ class RoverViewController: UIViewController{
     private var curiosity: [Photo] = []
     private var isFetchingData = false
     private var currentPage = 1
+    var screenType: ScreenType?
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -38,6 +45,11 @@ class RoverViewController: UIViewController{
     }
     
     // MARK: - Functions
+    convenience init(rootOption option: ScreenType){
+        self.init()
+        screenType = option
+    }
+    
     private func configureUI() {
         view.backgroundColor = .white
         view.addSubviews(testCV)

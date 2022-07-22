@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
-        let navigationController = UINavigationController(rootViewController: RoverViewController())
+        let navigationController = UINavigationController(rootViewController: MainViewController())
         window?.rootViewController = navigationController
         
         

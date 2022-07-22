@@ -20,6 +20,8 @@
 		2EAC6687288A8F3200BD97C9 /* RoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC6686288A8F3200BD97C9 /* RoverCell.swift */; };
 		2EAC668A288A8F6300BD97C9 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2EAC6689288A8F6300BD97C9 /* SDWebImage */; };
 		2EAC668C288A9C1600BD97C9 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC668B288A9C1600BD97C9 /* Alert.swift */; };
+		2EAC668E288A9FC700BD97C9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC668D288A9FC700BD97C9 /* MainViewController.swift */; };
+		2EAC6690288AA19100BD97C9 /* RoverTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC668F288AA19100BD97C9 /* RoverTypeCell.swift */; };
 		4EAC20E9B61756888CA08276 /* Pods_nasa_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC5E22E8678B6BACB01DD1B /* Pods_nasa_test.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		2EAC6684288A8F1D00BD97C9 /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		2EAC6686288A8F3200BD97C9 /* RoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverCell.swift; sourceTree = "<group>"; };
 		2EAC668B288A9C1600BD97C9 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		2EAC668D288A9FC700BD97C9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2EAC668F288AA19100BD97C9 /* RoverTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverTypeCell.swift; sourceTree = "<group>"; };
 		2FDC40A3410E3553175B46BF /* Pods-nasa_test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nasa_test.release.xcconfig"; path = "Target Support Files/Pods-nasa_test/Pods-nasa_test.release.xcconfig"; sourceTree = "<group>"; };
 		55F2C8141697835D15B788BD /* Pods-nasa_test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nasa_test.debug.xcconfig"; path = "Target Support Files/Pods-nasa_test/Pods-nasa_test.debug.xcconfig"; sourceTree = "<group>"; };
 		CFC5E22E8678B6BACB01DD1B /* Pods_nasa_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nasa_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				2EAC667C288A8D2900BD97C9 /* RoverScreen.swift */,
+				2EAC668D288A9FC700BD97C9 /* MainViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				2EAC6686288A8F3200BD97C9 /* RoverCell.swift */,
+				2EAC668F288AA19100BD97C9 /* RoverTypeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,10 +299,12 @@
 				2EAC6662288A8BCC00BD97C9 /* AppDelegate.swift in Sources */,
 				2EAC667D288A8D2900BD97C9 /* RoverScreen.swift in Sources */,
 				2EAC6664288A8BCC00BD97C9 /* SceneDelegate.swift in Sources */,
+				2EAC6690288AA19100BD97C9 /* RoverTypeCell.swift in Sources */,
 				2EAC6683288A8F0000BD97C9 /* RoverPhotos.swift in Sources */,
 				2EAC6681288A8EC600BD97C9 /* APICaller.swift in Sources */,
 				2EAC667F288A8EB300BD97C9 /* Extensions.swift in Sources */,
 				2EAC6685288A8F1D00BD97C9 /* Rover.swift in Sources */,
+				2EAC668E288A9FC700BD97C9 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

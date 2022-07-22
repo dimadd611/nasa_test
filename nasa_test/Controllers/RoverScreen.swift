@@ -44,6 +44,7 @@ final class RoverViewController: UIViewController{
     convenience init(rootOption option: ScreenType){
         self.init()
         screenType = option
+        title = screenType.roverType
     }
     
     private func configureUI() {
@@ -56,7 +57,7 @@ final class RoverViewController: UIViewController{
     
     private func fetchCuriosity() {
         
-        APICaller.shared.getData(atPage: currentPage, atType: screenType.roverType) { [weak self] result in
+        APICaller.shared.getData(atPage: currentPage, atType: screenType.roverType.lowercased()) { [weak self] result in
             guard let self = self else { return }
             
             switch result {

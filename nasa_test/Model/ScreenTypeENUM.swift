@@ -15,11 +15,11 @@ enum ScreenType{
     var roverType: String{
         switch self {
         case .curiosity:
-            return "curiosity"
+            return "Curiosity"
         case .opportunity:
-            return "opportunity"
+            return "Opportunity"
         case .spirit:
-            return "spirit"
+            return "Spirit"
         }
     }
 }

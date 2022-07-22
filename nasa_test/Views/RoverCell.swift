@@ -58,7 +58,7 @@ final class RoverCell: UICollectionViewCell {
     
     
     private func setupLayout() {
-        backgroundColor = .blue
+        backgroundColor = .black.withAlphaComponent(0.4)
         
         addSubviews(testImage, dateLabel, idLabel)
         

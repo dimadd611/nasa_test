@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
         setupUI()
     }
 }
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension MainViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return roverType.count
     }
@@ -51,7 +51,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.setup(title: roverType[indexPath.row])
         return cell
     }
-    
+}
+
+extension MainViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row{
         case 0:

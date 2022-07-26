@@ -27,7 +27,7 @@ final class RoverViewController: UIViewController{
     }()
     
     // MARK: - Variables
-    private var curiosity: [Photo] = []
+    private var curiosity: [Rover]?
     private var isFetchingData = false
     private var currentPage = 1
     var screenType: ScreenType!
@@ -35,16 +35,21 @@ final class RoverViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configureUI()
-        fetchCuriosity()
+        
     }
     
     // MARK: - Functions
-    convenience init(rootOption option: ScreenType){
+    convenience init(photos: [Rover], rootOption option: ScreenType){
         self.init()
+        self.curiosity = photos
         screenType = option
         title = screenType.roverType
+    }
+    
+    @objc func reload(){
+        testCV.reloadData()
     }
     
     private func configureUI() {
@@ -55,28 +60,7 @@ final class RoverViewController: UIViewController{
         }
     }
     
-    private func fetchCuriosity() {
-        
-        APICaller.shared.getData(atPage: currentPage, atType: screenType.roverType.lowercased()) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-                
-            case .success(let model):
-                
-                self.curiosity.append(contentsOf: model)
-                self.isFetchingData = false
-                self.currentPage += 1
-                
-                DispatchQueue.main.async {
-                    self.testCV.reloadData()
-                }
-                
-            case .failure(let error):
-                self.showAlert(title: "Error", message: error.localizedDescription)
-            }
-        }
-    }
+
 }
 
 // MARK: - Extension CollectionView DataSource
@@ -84,16 +68,20 @@ final class RoverViewController: UIViewController{
 extension RoverViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return curiosity.count
-    }
+        if let curiosity = curiosity?.count {
+              return curiosity
+          }
+        return 0
+      }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoverCell.identifier, for: indexPath) as? RoverCell else {
             return UICollectionViewCell()
         }
         
-        let curiosity = curiosity[indexPath.row]
-        cell.setup(model: curiosity)
+        if let curiosity = curiosity?[indexPath.row]{
+            cell.setup(with: RoverViewModel(roverId: Int(curiosity.id), roverImg: curiosity.image ?? "", roverDate: curiosity.earthDate ?? ""))
+          }
 
         return cell
     }
@@ -103,15 +91,53 @@ extension RoverViewController: UICollectionViewDataSource{
 
 extension RoverViewController: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let lastCuriosity = curiosity.count - 1
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        if indexPath.row == lastCuriosity && !isFetchingData {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.isFetchingData = true
-                self.fetchCuriosity()
+        let config = UIContextMenuConfiguration(identifier: nil,
+                                                previewProvider: nil) { _ in
+            
+          let delete = UIAction(title: "Delete Item",
+                                image: UIImage(systemName: "trash.fill"),
+                                identifier: nil,
+                                discoverabilityTitle: nil,
+                                attributes: .destructive
+          ) {_  in
+              guard let massiv = self.curiosity?[indexPath.row] else {return}
+              
+              CoreDataManager.shared.deleteNote(massiv)
+              self.testCV.reloadData()
+//              self.deletephotos(point: indexPath.row)
+//              self.deleteFolder(indexPath.row)
+//                      if let data = try? PropertyListEncoder().encode(self.folders) {
+//                             UserDefaults.standard.set(data, forKey: "Folders")
+//                         }
+          }
+            
+            
+            let open = UIAction(title: "Share Item",
+                                  image: UIImage(systemName: "arrow.forward.circle"),
+                                  identifier: nil,
+                                  discoverabilityTitle: nil
+                                  
+                                  
+            ) {_ in
+                guard let link = self.curiosity?[indexPath.row].image else {return}
+                let url = URL(string: link)!
+                let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                UIApplication.presentedViewController?.present(activityVC, animated: true, completion: {
+//                    IHProgressHUD.dismiss()
+                })
+                
             }
+            
+            
+          return UIMenu(title: "",
+                        image: nil,
+                        identifier: nil,
+                        options: UIMenu.Options.displayInline,
+                        children: [open, delete])
         }
+        return config
     }
 }

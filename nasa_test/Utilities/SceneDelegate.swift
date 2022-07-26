@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
         window?.rootViewController = navigationController
-        
+        CoreDataManager.shared.load()
         
     }
 

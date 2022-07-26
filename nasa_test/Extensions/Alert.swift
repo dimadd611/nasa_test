@@ -2,7 +2,7 @@
 //  Alert.swift
 //  nasa_test
 //
-//  Created by Сережа Присяжнюк on 22.07.2022.
+//  Created by Dumitru Rahmaniuc on 22.07.2022.
 //
 
 import Foundation

@@ -23,6 +23,8 @@
 		2EAC668E288A9FC700BD97C9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC668D288A9FC700BD97C9 /* MainViewController.swift */; };
 		2EAC6690288AA19100BD97C9 /* RoverTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC668F288AA19100BD97C9 /* RoverTypeCell.swift */; };
 		2EAC6692288AA9AA00BD97C9 /* ScreenTypeENUM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC6691288AA9AA00BD97C9 /* ScreenTypeENUM.swift */; };
+		2EB4F485288D593000E89C76 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB4F484288D593000E89C76 /* DataController.swift */; };
+		2EB4F488288D597200E89C76 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EB4F486288D597200E89C76 /* Main.xcdatamodeld */; };
 		4EAC20E9B61756888CA08276 /* Pods_nasa_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC5E22E8678B6BACB01DD1B /* Pods_nasa_test.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		2EAC668D288A9FC700BD97C9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2EAC668F288AA19100BD97C9 /* RoverTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverTypeCell.swift; sourceTree = "<group>"; };
 		2EAC6691288AA9AA00BD97C9 /* ScreenTypeENUM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTypeENUM.swift; sourceTree = "<group>"; };
+		2EB4F484288D593000E89C76 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		2EB4F487288D597200E89C76 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		2FDC40A3410E3553175B46BF /* Pods-nasa_test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nasa_test.release.xcconfig"; path = "Target Support Files/Pods-nasa_test/Pods-nasa_test.release.xcconfig"; sourceTree = "<group>"; };
 		55F2C8141697835D15B788BD /* Pods-nasa_test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nasa_test.debug.xcconfig"; path = "Target Support Files/Pods-nasa_test/Pods-nasa_test.debug.xcconfig"; sourceTree = "<group>"; };
 		CFC5E22E8678B6BACB01DD1B /* Pods_nasa_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nasa_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				2EAC6680288A8EC600BD97C9 /* APICaller.swift */,
+				2EB4F484288D593000E89C76 /* DataController.swift */,
+				2EB4F486288D597200E89C76 /* Main.xcdatamodeld */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 				2EAC6687288A8F3200BD97C9 /* RoverCell.swift in Sources */,
 				2EAC6662288A8BCC00BD97C9 /* AppDelegate.swift in Sources */,
 				2EAC667D288A8D2900BD97C9 /* RoverScreen.swift in Sources */,
+				2EB4F488288D597200E89C76 /* Main.xcdatamodeld in Sources */,
 				2EAC6664288A8BCC00BD97C9 /* SceneDelegate.swift in Sources */,
 				2EAC6690288AA19100BD97C9 /* RoverTypeCell.swift in Sources */,
 				2EAC6683288A8F0000BD97C9 /* RoverPhotos.swift in Sources */,
@@ -308,6 +315,7 @@
 				2EAC667F288A8EB300BD97C9 /* Extensions.swift in Sources */,
 				2EAC6685288A8F1D00BD97C9 /* Rover.swift in Sources */,
 				2EAC6692288AA9AA00BD97C9 /* ScreenTypeENUM.swift in Sources */,
+				2EB4F485288D593000E89C76 /* DataController.swift in Sources */,
 				2EAC668E288A9FC700BD97C9 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,6 +553,19 @@
 			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		2EB4F486288D597200E89C76 /* Main.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2EB4F487288D597200E89C76 /* Main.xcdatamodel */,
+			);
+			currentVersion = 2EB4F487288D597200E89C76 /* Main.xcdatamodel */;
+			path = Main.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2EAC6656288A8BCC00BD97C9 /* Project object */;
 }

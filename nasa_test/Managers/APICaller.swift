@@ -6,51 +6,91 @@
 //
 
 import Foundation
-import UIKit
+final class APICaller{
 
-struct Constants{
-    static let baseURL = "https://api.nasa.gov/mars-photos/api/v1/rovers"
-    static let APIKey = "NUjzNXhXkAtBeDLA1qsez4ena03pnSn8draS1QEV"
-}
+  static let shared = APICaller()
 
-enum APIError: Error{
+  private init() {}
+
+  struct Constants {
+    static let baseApiURL = "https://api.nasa.gov/mars-photos/api/v1/rovers"
+  }
+
+  enum APIError: Error {
     case failedToGetData
-}
+  }
 
-class APICaller {
-    static let shared = APICaller()
-    
-    
-    public func getData(atPage page: Int, atType type: String, completion: @escaping (Result<[Photo],Error>) -> Void) {
-        
-        let url = URL(string: "\(Constants.baseURL)/\(type)/photos?sol=\(page)&api_key=\(Constants.APIKey)")!
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            
-            if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(RoverPhoto.self, from: data)
-                    completion(.success(result.photos))
-                }
-                catch {
-                    self.handleApiError(error.localizedDescription)
-                }
-            } else if let error = error {
-                self.handleApiError(error.localizedDescription)
-            }
-        }
-        task.resume()
-        
-        
-    }
- 
-    
-    private func handleApiError(_ message: String) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-            alert.addAction(cancel)
-            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
-        }
-    }
-}
 
+
+  enum HTTPMethod: String {
+    case GET
+    case POST
+  }
+
+  public func getOpportunityRovers(completion: @escaping (Result<RoverPhoto,Error>) -> Void){
+
+
+    let url = URL(string: "\(Constants.baseApiURL)/opportunity/photos?sol=2&api_key=895TLKaHskn6AUO9MwdzgXneaTJ6JGRm6kqWB6Jd")!
+    let task = URLSession.shared.dataTask(with: url) { data, _, error in
+      guard let data = data, error == nil else {
+        completion(.failure(APIError.failedToGetData))
+        return
+      }
+
+      do {
+        let result = try JSONDecoder().decode(RoverPhoto.self, from: data)
+
+        completion(.success(result))
+      }
+      catch {
+        completion(.failure(error))
+      }
+    }
+      task.resume()
+
+
+
+  }
+  public func getSpiritRovers(completion: @escaping (Result<RoverPhoto,Error>) -> Void){
+    let url = URL(string: "\(Constants.baseApiURL)/spirit/photos?sol=2&api_key=895TLKaHskn6AUO9MwdzgXneaTJ6JGRm6kqWB6Jd")!
+    let task = URLSession.shared.dataTask(with: url) { data, _, error in
+      guard let data = data, error == nil else {
+        completion(.failure(APIError.failedToGetData))
+        return
+      }
+
+      do {
+        let result = try JSONDecoder().decode(RoverPhoto.self, from: data)
+
+        completion(.success(result))
+      }
+      catch {
+        completion(.failure(error))
+      }
+    }
+    task.resume()
+
+
+  }
+
+  public func getCuriosityRovers(completion: @escaping (Result<RoverPhoto,Error>) -> Void) {
+    let url = URL(string: "\(Constants.baseApiURL)/curiosity/photos?sol=3&api_key=895TLKaHskn6AUO9MwdzgXneaTJ6JGRm6kqWB6Jd")!
+    let task = URLSession.shared.dataTask(with: url) { data, _, error in
+      guard let data = data, error == nil else {
+        completion(.failure(APIError.failedToGetData))
+        return
+      }
+
+      do {
+        let result = try JSONDecoder().decode(RoverPhoto.self, from: data)
+        completion(.success(result))
+      }
+      catch {
+        completion(.failure(error))
+      }
+    }
+    task.resume()
+
+
+  }
+}

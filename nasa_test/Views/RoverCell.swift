@@ -79,12 +79,12 @@ final class RoverCell: UICollectionViewCell {
         
     }
     
-    public func setup(model: Photo){
+    public func setup(with model: RoverViewModel){
         
-        guard let urlString = URL(string: "\(model.imgSrc)") else {return}
+        guard let urlString = URL(string: "\(model.roverImg)") else {return}
         testImage.sd_setImage(with: urlString, completed: nil)
-        idLabel.text = "ID: \(model.id)"
-        dateLabel.text = "DATE: \(model.earthDate)"
+        idLabel.text = "ID: \(model.roverId)"
+        dateLabel.text = "DATE: \(model.roverDate)"
     }
     
 }
